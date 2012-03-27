@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Jenkins関連メモ &mdash; daneko&#39;s memo 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="daneko&#39;s memo 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="雑多メモ" href="etcmemo.html" />
+    <link rel="prev" title="Welcome to daneko’s memo’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="etcmemo.html" title="雑多メモ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to daneko’s memo’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Jenkins関連メモ</a><ul>
+<li><a class="reference internal" href="#jenkinsmercurial-bitbucket">jenkinsでMercurial+bitbucketを使うために</a></li>
+<li><a class="reference internal" href="#bitbucketjenkins">bitbucketからJenkinsに通知</a></li>
+<li><a class="reference internal" href="#jenkins-ant-android">jenkins+Ant+Android</a></li>
+<li><a class="reference internal" href="#id1">参考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to daneko&#8217;s memo&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="etcmemo.html"
+                        title="next chapter">雑多メモ</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/jenkins_memo.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="jenkins">
+<h1>Jenkins関連メモ<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="jenkinsmercurial-bitbucket">
+<h2>jenkinsでMercurial+bitbucketを使うために<a class="headerlink" href="#jenkinsmercurial-bitbucket" title="Permalink to this headline">¶</a></h2>
+<p>mercurial plugin を導入する</p>
+<div class="line-block">
+<div class="line">現状不明点</div>
+<div class="line">Jenkinsでビルド実行時にまずcloneするはずだが、認証に失敗する</div>
+<div class="line">そのため下記構成を先ずは作成した</div>
+</div>
+<div class="highlight-python"><pre>JENKINS_HOME
+└── .ssh/id_rsa
+└── .hgrc</pre>
+</div>
+<p>.hgrcの中身</p>
+<div class="highlight-python"><pre>[ui]
+ssh = ssh -C -i path_to_JENKINSHOME/.ssh/id_rsa</pre>
+</div>
+<div class="line-block">
+<div class="line">いずれも</div>
+<div class="line">sudo -u jenkins</div>
+<div class="line">で行なった or 最後に保有者をjenkinsUserに置き換えた</div>
+<div class="line"><br /></div>
+<div class="line">この状態でビルド実行してもダメだったが</div>
+<div class="line">sudo -u jenkins hg clone <a class="reference external" href="ssh://hg&#64;bitbucket.org/">ssh://hg&#64;bitbucket.org/</a>...</div>
+<div class="line">を適当なところで試し、再度ビルド実行を行ったところ、hg cloneが成功した</div>
+<div class="line"><br /></div>
+<div class="line">参考URLのようにjenkinsユーザでsshkeyを作成し、そのキーを登録すればいいのかもしれないが</div>
+<div class="line">面倒で通常ユーザとキーを共有したのが間違い？</div>
+</div>
+</div>
+<div class="section" id="bitbucketjenkins">
+<h2>bitbucketからJenkinsに通知<a class="headerlink" href="#bitbucketjenkins" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://confluence.atlassian.com/display/BITBUCKET/Setting+Up+the+Bitbucket+Jenkins+Service">http://confluence.atlassian.com/display/BITBUCKET/Setting+Up+the+Bitbucket+Jenkins+Service</a></div>
+<div class="line">リポジトリ -&gt; admin -&gt; Service にてJenkinsを選択し、</div>
+<div class="line">Endpointに Jenkinsのダッシュボードへのリンク</div>
+<div class="line">Project Name にJenkinsでのプロジェクト名</div>
+<div class="line">を入れれば最低限OK</div>
+</div>
+</div>
+<div class="section" id="jenkins-ant-android">
+<h2>jenkins+Ant+Android<a class="headerlink" href="#jenkins-ant-android" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>動作は未検証</dt>
+<dd><a class="reference external" href="http://d.hatena.ne.jp/tlync/20120326/1332691894">http://d.hatena.ne.jp/tlync/20120326/1332691894</a></dd>
+</dl>
+</div>
+<div class="section" id="id1">
+<h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://d.hatena.ne.jp/w650/20110415/1302838728">http://d.hatena.ne.jp/w650/20110415/1302838728</a></div>
+<div class="line"><a class="reference external" href="http://d.hatena.ne.jp/tlync/20120326/1332691894">http://d.hatena.ne.jp/tlync/20120326/1332691894</a></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="etcmemo.html" title="雑多メモ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to daneko’s memo’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, daneko.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
