@@ -47,12 +47,61 @@ bitbucketからJenkinsに通知
 | Project Name にJenkinsでのプロジェクト名
 | を入れれば最低限OK
 
+bitbucketの通知を妨げない最低限のJenkins上でのセキュリティ
+----------------------------------------------------------
+
+.. blockdiag::
+   :desctable:
+
+   blockdiag {
+    default_fontsize = 16
+    node_width = 100;
+    span_width = 120;  // default value is 64
+    span_height = 120;  // default value is 40
+
+    // set default shape
+    default_shape = roundedbox;  // default value is 'box'
+    A -> B [label = "push", fontsize=14];
+    B -> C [label = "build通知", fontsize=14];
+    A[description = "ローカル（開発環境）"];
+    B[description = "Bitbucket とか"];
+    C[description = "Jenkins"];
+   }
+
+上記のような環境で、JenkinsにBuild通知を行おうとすると下記権限が必要っぽい
+
+* 全体:Read
+* ジョブ:Read/Build
+
+| これを匿名ユーザに許可するわけだが、そうすると誰でもBuildが実行できてしまうし、
+| 成果物のDLも可能な状態となる。
+| WebAPIの使用自体は各jobの設定からTokenをつけることである程度回避できそうだが、
+| 結局直接見にこられる分には回避ができない。
+| 純粋に下記構成にすれば匿名ユーザから権限を外すことも可能だけどなんかスマートじゃない
+
+.. blockdiag::
+
+   blockdiag {
+    default_fontsize = 16
+    node_width = 100;
+    span_width = 120;  // default value is 64
+    span_height = 120;  // default value is 40
+
+    // set default shape
+    default_shape = roundedbox;  // default value is 'box'
+    A -> B [label = "push", fontsize=14];
+    B <- C [label = "polling", fontsize=14];
+   }
+
+
 
 jenkins+Ant+Android
 -------------------
 
-動作は未検証
- http://d.hatena.ne.jp/tlync/20120326/1332691894 
+| 動作は未検証
+| http://d.hatena.ne.jp/tlync/20120326/1332691894
+| https://wiki.jenkins-ci.org/display/JENKINS/Android+Emulator+Plugin
+| http://mattari.sumomo.ne.jp/2011/10/jenkins-%E3%81%A7-android-unittest-%E3%82%92%E8%87%AA%E5%8B%95%E5%AE%9F%E8%A1%8C%E3%81%97%E3%81%A6%E3%82%AB%E3%83%90%E3%83%AC%E3%83%83%E3%82%B8%E3%82%92%E6%8E%A1%E5%8F%96%E3%81%99%E3%82%8B%E3%80%82/
 
 参考
 ----

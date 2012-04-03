@@ -52,8 +52,9 @@
 <li><a class="reference internal" href="#">Jenkins関連メモ</a><ul>
 <li><a class="reference internal" href="#jenkinsmercurial-bitbucket">jenkinsでMercurial+bitbucketを使うために</a></li>
 <li><a class="reference internal" href="#bitbucketjenkins">bitbucketからJenkinsに通知</a></li>
+<li><a class="reference internal" href="#id1">bitbucketの通知を妨げない最低限のJenkins上でのセキュリティ</a></li>
 <li><a class="reference internal" href="#jenkins-ant-android">jenkins+Ant+Android</a></li>
-<li><a class="reference internal" href="#id1">参考</a></li>
+<li><a class="reference internal" href="#id2">参考</a></li>
 </ul>
 </li>
 </ul>
@@ -131,15 +132,60 @@ ssh = ssh -C -i path_to_JENKINSHOME/.ssh/id_rsa</pre>
 <div class="line">を入れれば最低限OK</div>
 </div>
 </div>
+<div class="section" id="id1">
+<h2>bitbucketの通知を妨げない最低限のJenkins上でのセキュリティ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p class="blockdiag">
+<img src="_images/blockdiag-851975cb726004faa8f510cd5b2b28f7f7ac50ff.png" alt="None" width="780" height="280" />
+</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>ローカル（開発環境）</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>Bitbucket とか</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>Jenkins</td>
+</tr>
+</tbody>
+</table>
+<p>上記のような環境で、JenkinsにBuild通知を行おうとすると下記権限が必要っぽい</p>
+<ul class="simple">
+<li>全体:Read</li>
+<li>ジョブ:Read/Build</li>
+</ul>
+<div class="line-block">
+<div class="line">これを匿名ユーザに許可するわけだが、そうすると誰でもBuildが実行できてしまうし、</div>
+<div class="line">成果物のDLも可能な状態となる。</div>
+<div class="line">WebAPIの使用自体は各jobの設定からTokenをつけることである程度回避できそうだが、</div>
+<div class="line">結局直接見にこられる分には回避ができない。</div>
+<div class="line">純粋に下記構成にすれば匿名ユーザから権限を外すことも可能だけどなんかスマートじゃない</div>
+</div>
+<p class="blockdiag">
+<img src="_images/blockdiag-f4e2eae3f82b399b41e1082ba262571d9924a15c.png" alt="None" width="780" height="280" />
+</p>
+</div>
 <div class="section" id="jenkins-ant-android">
 <h2>jenkins+Ant+Android<a class="headerlink" href="#jenkins-ant-android" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>動作は未検証</dt>
-<dd><a class="reference external" href="http://d.hatena.ne.jp/tlync/20120326/1332691894">http://d.hatena.ne.jp/tlync/20120326/1332691894</a></dd>
-</dl>
+<div class="line-block">
+<div class="line">動作は未検証</div>
+<div class="line"><a class="reference external" href="http://d.hatena.ne.jp/tlync/20120326/1332691894">http://d.hatena.ne.jp/tlync/20120326/1332691894</a></div>
+<div class="line"><a class="reference external" href="https://wiki.jenkins-ci.org/display/JENKINS/Android+Emulator+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Android+Emulator+Plugin</a></div>
+<div class="line"><a class="reference external" href="http://mattari.sumomo.ne.jp/2011/10/jenkins-%E3%81%A7-android-unittest-%E3%82%92%E8%87%AA%E5%8B%95%E5%AE%9F%E8%A1%8C%E3%81%97%E3%81%A6%E3%82%AB%E3%83%90%E3%83%AC%E3%83%83%E3%82%B8%E3%82%92%E6%8E%A1%E5%8F%96%E3%81%99%E3%82%8B%E3%80%82/">http://mattari.sumomo.ne.jp/2011/10/jenkins-%E3%81%A7-android-unittest-%E3%82%92%E8%87%AA%E5%8B%95%E5%AE%9F%E8%A1%8C%E3%81%97%E3%81%A6%E3%82%AB%E3%83%90%E3%83%AC%E3%83%83%E3%82%B8%E3%82%92%E6%8E%A1%E5%8F%96%E3%81%99%E3%82%8B%E3%80%82/</a></div>
 </div>
-<div class="section" id="id1">
-<h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2>参考<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line"><a class="reference external" href="http://d.hatena.ne.jp/w650/20110415/1302838728">http://d.hatena.ne.jp/w650/20110415/1302838728</a></div>
 <div class="line"><a class="reference external" href="http://d.hatena.ne.jp/tlync/20120326/1332691894">http://d.hatena.ne.jp/tlync/20120326/1332691894</a></div>
