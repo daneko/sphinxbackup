@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    jenkins_memo
+   github_memo
    etcmemo
 
 

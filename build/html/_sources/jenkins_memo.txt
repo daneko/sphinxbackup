@@ -35,8 +35,8 @@ mercurial plugin を導入する
 | sudo -u jenkins hg clone ssh://hg@bitbucket.org/...
 | を適当なところで試し、再度ビルド実行を行ったところ、hg cloneが成功した
 | 
-| 参考URLのようにjenkinsユーザでsshkeyを作成し、そのキーを登録すればいいのかもしれないが
-| 面倒で通常ユーザとキーを共有したのが間違い？
+| おそらくフィンガープリントが登録されていなかったことが原因^^;
+|
 
 
 bitbucketからJenkinsに通知
@@ -93,6 +93,27 @@ bitbucketの通知を妨げない最低限のJenkins上でのセキュリティ
     B <- C [label = "polling", fontsize=14];
    }
 
+
+
+jenkins + git + github
+----------------------
+
+github plugin を入れる
+
+| 入れようとするとgit関連のプラグインが勝手に複数インストールされるので入れてもらう
+| 未確認だが、プラグイン側からgithub側に設定を飛ばせる
+| なのでアカウントだけ渡せば、bitbucketと異なりjenkins側だけで操作が完了
+| jobのビルドトリガにBuild when a change is pushed to GitHub ってのができるしね
+
+jenkins + sbt
+-------------
+
+sbt plugin を入れる
+
+| 必要なのはsbt-launcher「.jar」の場所を指定すること
+| その他job毎にsbt Flagを指定することとなる
+| actionはsbtで実行したいコマンドをただ書くだけ
+| 自分でsbtを実行するのと何らかわりなし
 
 
 jenkins+Ant+Android

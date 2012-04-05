@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="daneko&#39;s memo 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="雑多メモ" href="etcmemo.html" />
+    <link rel="next" title="github関連メモ" href="github_memo.html" />
     <link rel="prev" title="Welcome to daneko’s memo’s documentation!" href="index.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="etcmemo.html" title="雑多メモ"
+          <a href="github_memo.html" title="github関連メモ"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to daneko’s memo’s documentation!"
@@ -53,6 +53,8 @@
 <li><a class="reference internal" href="#jenkinsmercurial-bitbucket">jenkinsでMercurial+bitbucketを使うために</a></li>
 <li><a class="reference internal" href="#bitbucketjenkins">bitbucketからJenkinsに通知</a></li>
 <li><a class="reference internal" href="#id1">bitbucketの通知を妨げない最低限のJenkins上でのセキュリティ</a></li>
+<li><a class="reference internal" href="#jenkins-git-github">jenkins + git + github</a></li>
+<li><a class="reference internal" href="#jenkins-sbt">jenkins + sbt</a></li>
 <li><a class="reference internal" href="#jenkins-ant-android">jenkins+Ant+Android</a></li>
 <li><a class="reference internal" href="#id2">参考</a></li>
 </ul>
@@ -63,8 +65,8 @@
   <p class="topless"><a href="index.html"
                         title="previous chapter">Welcome to daneko&#8217;s memo&#8217;s documentation!</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="etcmemo.html"
-                        title="next chapter">雑多メモ</a></p>
+  <p class="topless"><a href="github_memo.html"
+                        title="next chapter">github関連メモ</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/jenkins_memo.txt"
@@ -118,8 +120,8 @@ ssh = ssh -C -i path_to_JENKINSHOME/.ssh/id_rsa</pre>
 <div class="line">sudo -u jenkins hg clone <a class="reference external" href="ssh://hg&#64;bitbucket.org/">ssh://hg&#64;bitbucket.org/</a>...</div>
 <div class="line">を適当なところで試し、再度ビルド実行を行ったところ、hg cloneが成功した</div>
 <div class="line"><br /></div>
-<div class="line">参考URLのようにjenkinsユーザでsshkeyを作成し、そのキーを登録すればいいのかもしれないが</div>
-<div class="line">面倒で通常ユーザとキーを共有したのが間違い？</div>
+<div class="line">おそらくフィンガープリントが登録されていなかったことが原因^^;</div>
+<div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="bitbucketjenkins">
@@ -175,6 +177,26 @@ ssh = ssh -C -i path_to_JENKINSHOME/.ssh/id_rsa</pre>
 <img src="_images/blockdiag-f4e2eae3f82b399b41e1082ba262571d9924a15c.png" alt="None" width="780" height="280" />
 </p>
 </div>
+<div class="section" id="jenkins-git-github">
+<h2>jenkins + git + github<a class="headerlink" href="#jenkins-git-github" title="Permalink to this headline">¶</a></h2>
+<p>github plugin を入れる</p>
+<div class="line-block">
+<div class="line">入れようとするとgit関連のプラグインが勝手に複数インストールされるので入れてもらう</div>
+<div class="line">未確認だが、プラグイン側からgithub側に設定を飛ばせる</div>
+<div class="line">なのでアカウントだけ渡せば、bitbucketと異なりjenkins側だけで操作が完了</div>
+<div class="line">jobのビルドトリガにBuild when a change is pushed to GitHub ってのができるしね</div>
+</div>
+</div>
+<div class="section" id="jenkins-sbt">
+<h2>jenkins + sbt<a class="headerlink" href="#jenkins-sbt" title="Permalink to this headline">¶</a></h2>
+<p>sbt plugin を入れる</p>
+<div class="line-block">
+<div class="line">必要なのはsbt-launcher「.jar」の場所を指定すること</div>
+<div class="line">その他job毎にsbt Flagを指定することとなる</div>
+<div class="line">actionはsbtで実行したいコマンドをただ書くだけ</div>
+<div class="line">自分でsbtを実行するのと何らかわりなし</div>
+</div>
+</div>
 <div class="section" id="jenkins-ant-android">
 <h2>jenkins+Ant+Android<a class="headerlink" href="#jenkins-ant-android" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
@@ -206,7 +228,7 @@ ssh = ssh -C -i path_to_JENKINSHOME/.ssh/id_rsa</pre>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="etcmemo.html" title="雑多メモ"
+          <a href="github_memo.html" title="github関連メモ"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to daneko’s memo’s documentation!"

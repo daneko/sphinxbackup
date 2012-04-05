@@ -1,0 +1,155 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>github関連メモ &mdash; daneko&#39;s memo 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="daneko&#39;s memo 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="雑多メモ" href="etcmemo.html" />
+    <link rel="prev" title="Jenkins関連メモ" href="jenkins_memo.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="etcmemo.html" title="雑多メモ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="jenkins_memo.html" title="Jenkins関連メモ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">github関連メモ</a><ul>
+<li><a class="reference internal" href="#ssh-i">ssh -i ぽいことをやる</a></li>
+<li><a class="reference internal" href="#id1">参考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="jenkins_memo.html"
+                        title="previous chapter">Jenkins関連メモ</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="etcmemo.html"
+                        title="next chapter">雑多メモ</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/github_memo.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="github">
+<h1>github関連メモ<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ssh-i">
+<h2>ssh -i ぽいことをやる<a class="headerlink" href="#ssh-i" title="Permalink to this headline">¶</a></h2>
+<p>mercurial の場合、.hgrc にテキトーにコマンド書いたりすればいいのだが、gitはそうは行かなかった</p>
+<p>.hgrc だったらこんな感じ</p>
+<div class="highlight-python"><pre>[ui]
+ssh = -C -i ~/.ssh/hoge_key</pre>
+</div>
+<p>git の場合、GIT_SSHに通知しなければならないらしくこうなる</p>
+<div class="line-block">
+<div class="line">まず下記のようなシェルスクリプトを用意</div>
+<div class="line">ここでは/usr/local/bin/git_ssh_wrap にあると仮定</div>
+</div>
+<div class="highlight-python"><pre>#!/bin/sh
+exec ssh -i ~/.ssh/hoge_key "$@"</pre>
+</div>
+<p>以下のように使用</p>
+<div class="highlight-python"><pre>$ cd /tmp #適当なディレクトリへ
+$ GIT_SSH=git_ssh_wrap git clone git@github... #とか</pre>
+</div>
+<p>まいどGIT_SSH=... とかダルイのでaliasでも</p>
+<div class="highlight-python"><pre>$ alias git-wrap GIT_SSH=git_ssh_wrap git
+$ git-wrap clone git@github...</pre>
+</div>
+<div class="line-block">
+<div class="line">接続先別等でこれするなら ~/.ssh/config にサーバ名と使用するkeyを設定すればいいと思うが</div>
+<div class="line">なぜかうまく行かないことがあり、結局この方法に落ち着いていたりいなかったり</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://hisashim.org/2010/02/23/git-ssh-options.html">http://hisashim.org/2010/02/23/git-ssh-options.html</a></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="etcmemo.html" title="雑多メモ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="jenkins_memo.html" title="Jenkins関連メモ"
+             >previous</a> |</li>
+        <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, daneko.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
