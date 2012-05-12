@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CloudCore関連メモ &mdash; daneko&#39;s memo 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="daneko&#39;s memo 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="nginx 現在の設定関連メモ" href="nginx_memo.html" />
+    <link rel="prev" title="github関連メモ" href="github_memo.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="nginx_memo.html" title="nginx 現在の設定関連メモ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="github_memo.html" title="github関連メモ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CloudCore関連メモ</a><ul>
+<li><a class="reference internal" href="#centos6-2">CentOS6.2をインストール</a><ul>
+<li><a class="reference internal" href="#id1">パッケージ更新</a></li>
+<li><a class="reference internal" href="#openssh">OpenSSHインストール</a></li>
+<li><a class="reference internal" href="#id2">ログインユーザの作成とか</a></li>
+<li><a class="reference internal" href="#root">パスワードログイン/rootログイン禁止</a></li>
+<li><a class="reference internal" href="#sudopath">sudoでPATHなどの環境変数を引き継ぐ</a></li>
+<li><a class="reference internal" href="#selinux">selinuxの無効化</a></li>
+<li><a class="reference internal" href="#zsh">zshに切り替え</a></li>
+<li><a class="reference internal" href="#python2-7-3">python2.7.3 インストール</a></li>
+<li><a class="reference internal" href="#eazy-install">eazy_install インストール</a></li>
+<li><a class="reference internal" href="#pip">pip インストール</a></li>
+<li><a class="reference internal" href="#mercurial">mercurial インストール</a></li>
+<li><a class="reference internal" href="#vim">vim インストール</a></li>
+<li><a class="reference internal" href="#git">git インストール</a></li>
+<li><a class="reference internal" href="#nginx">nginx インストール</a></li>
+<li><a class="reference internal" href="#java">java インストール</a></li>
+<li><a class="reference internal" href="#jenkins">jenkins インストール</a></li>
+<li><a class="reference internal" href="#iptables">iptablesの設定</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="github_memo.html"
+                        title="previous chapter">github関連メモ</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="nginx_memo.html"
+                        title="next chapter">nginx 現在の設定関連メモ</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/cloudcore_cent_memo.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cloudcore">
+<h1>CloudCore関連メモ<a class="headerlink" href="#cloudcore" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="centos6-2">
+<h2>CentOS6.2をインストール<a class="headerlink" href="#centos6-2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">下記URLを参考</div>
+<div class="line"><a class="reference external" href="http://aikotobaha.blogspot.jp/2012/03/cloudcore-vps-centos6.html">http://aikotobaha.blogspot.jp/2012/03/cloudcore-vps-centos6.html</a></div>
+</div>
+<div class="section" id="id1">
+<h3>パッケージ更新<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre># まずログイン
+$ yum install man -y
+$ yum update -y</pre>
+</div>
+</div>
+<div class="section" id="openssh">
+<h3>OpenSSHインストール<a class="headerlink" href="#openssh" title="Permalink to this headline">¶</a></h3>
+<p>最小構成だとOpenSSHなんか無いからscpとか使えないので</p>
+<div class="highlight-python"><pre># root
+$ yum install -y openssh-clients</pre>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>ログインユーザの作成とか<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre># root ログイン
+$ useradd hoge
+$ passwd hoge
+# テケトーにパスワード設定
+$ usermod -g wheel hoge
+
+# sudo権限を与えるなら
+$ visudo
+# root    ALL=(ALL) ALLの下に
+# hoge    ALL=(ALL) ALL
+# or
+# %wheel  ALL=(ALL) ALL
+
+# クライアント側で
+$ scp hoge.pub hoge@ipaddressとか:/tmp
+
+# hoge ログイン
+$ mv /tmp/hoge.pub .ssh
+# authorized_keysがない場合
+$ mv .ssh/hoge.pub .ssh/authorized_keys
+# ある場合は追記
+$ cat .ssh/hoge.pub &gt;&gt; .ssh/authorized_keys
+# パーミッション設定
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/authorized_keys
+
+# クライアント側 .ssh/config
+ServerAliveInterval 10
+
+Host cloudcore(とか適当な名前)
+   HostName ipaddressとか
+   Port 22
+   User hoge
+   IdentityFile ~/.ssh/hoge
+
+# ログインできるか確認
+$ ssh cloudcore
+
+# hogeユーザでログイン出来ればOK</pre>
+</div>
+</div>
+<div class="section" id="root">
+<h3>パスワードログイン/rootログイン禁止<a class="headerlink" href="#root" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">まず以下を行なう</div>
+<div class="line"><a class="reference external" href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/430dnypsswdacces.html">http://www.atmarkit.co.jp/flinux/rensai/linuxtips/430dnypsswdacces.html</a></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># rootログインも禁止</span>
+<span class="c"># PermitRootLogin no</span>
+
+<span class="c"># Deprecated option RhostsAuthentication と言われるので</span>
+<span class="c"># - RhostsAuthentication no</span>
+<span class="c"># + RhostsRSAAuthentication no</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sudopath">
+<h3>sudoでPATHなどの環境変数を引き継ぐ<a class="headerlink" href="#sudopath" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">下記URL参考</div>
+<div class="line">visudo で Defaults:hoge !env_resetを追加したが</div>
+<div class="line">効果がなかった…</div>
+<div class="line"><a class="reference external" href="http://www.pistolfly.jp/weblog/2010/07/sudopath.html">http://www.pistolfly.jp/weblog/2010/07/sudopath.html</a></div>
+</div>
+<div class="highlight-python"><pre>alias sudo='sudo PATH=$PATH'</pre>
+</div>
+</div>
+<div class="section" id="selinux">
+<h3>selinuxの無効化<a class="headerlink" href="#selinux" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">下記参考</div>
+<div class="line"><a class="reference external" href="http://fedorasrv.com/memo/log/35.shtml">http://fedorasrv.com/memo/log/35.shtml</a></div>
+</div>
+<div class="highlight-python"><pre>$ getenforce
+# Enforcingと返ってくると有効になっている
+$ setenforce 0
+$ vim /etc/sysconfig/selinux
+#SELINUX=enforcing
+SELINUX=disabled</pre>
+</div>
+</div>
+<div class="section" id="zsh">
+<h3>zshに切り替え<a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">yum info zsh を見ると versionが古いのでソースコンパイル</div>
+<div class="line">selinux無効化しないとchshで失敗する(なんでかはしらん)</div>
+</div>
+<div class="highlight-python"><pre>$ yum info zsh
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: ftp.iij.ad.jp
+ * extras: ftp.iij.ad.jp
+ * updates: ftp.iij.ad.jp
+Available Packages
+Name        : zsh
+Arch        : x86_64
+Version     : 4.3.10
+Release     : 4.1.el6
+Size        : 2.1 M
+Repo        : base
+Summary     : A powerful interactive shell
+URL         : http://zsh.sunsite.dk/
+License     : BSD
+Description : The zsh shell is a command interpreter usable as an interactive
+            : login shell and as a shell script command processor.  Zsh
+            : resembles the ksh shell (the Korn shell), but includes many
+            : enhancements.  Zsh supports command line editing, built-in
+            : spelling correction, programmable command completion, shell
+            : functions (with autoloading), a history mechanism, and more.</pre>
+</div>
+<div class="line-block">
+<div class="line">いろいろとしゃーないのでローカルに落としてから上げる</div>
+<div class="line"><a class="reference external" href="http://sourceforge.net/projects/zsh/files/">http://sourceforge.net/projects/zsh/files/</a></div>
+</div>
+<div class="highlight-python"><pre>$ tar zxvf zsh-4.3.17.tar.gz
+$ cd zsh-4.3.17
+# OSインストール直後でなにもないので各種インストール
+$ sudo yum -y install gcc-c++
+$ sudo yum -y install ncurses-devel
+$ sudo yum -y install make
+$ ./configure
+$ make
+$ sudo make install
+# シェルとして登録
+$ which zsh | sudo tee -a /etc/shells
+$ chsh -s $(which zsh)
+# chsh: "/usr/local/bin/zsh" is not executable. とでる場合selinuxを疑ってみて！！</pre>
+</div>
+</div>
+<div class="section" id="python2-7-3">
+<h3>python2.7.3 インストール<a class="headerlink" href="#python2-7-3" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">ソースからコンパイルする</div>
+<div class="line">詳細は過去メモ参照しているので、実はビミョー</div>
+<div class="line">pythonbrewを試せばよかったかな…</div>
+</div>
+<div class="highlight-python"><pre>$ sudo yum install wget
+$ sudo yum install zlib-devel ncurses-devel readline-devel sqlite-devel tcl-devel tk-devel openssl-devel bzip2-devel
+$ wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tar.bz2
+$ tar xpvf Python-2.7.3.tar.bz2
+$ ./configure --with-threads --enable-shared
+$ make
+$ sudo make install
+$ sudo sh -c 'echo "/usr/local/lib" &gt;&gt; /etc/ld.so.conf.d/python2.7.conf'
+$ sudo /sbin/ldconfig
+$ python -V で2.7.3が出る</pre>
+</div>
+</div>
+<div class="section" id="eazy-install">
+<h3>eazy_install インストール<a class="headerlink" href="#eazy-install" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ wget http://peak.telecommunity.com/dist/ez_setup.py
+$ sudo python ez_setup.py</pre>
+</div>
+</div>
+<div class="section" id="pip">
+<h3>pip インストール<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ easy_install pip</pre>
+</div>
+</div>
+<div class="section" id="mercurial">
+<h3>mercurial インストール<a class="headerlink" href="#mercurial" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ pip install mercurial</pre>
+</div>
+</div>
+<div class="section" id="vim">
+<h3>vim インストール<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h3>
+<p>ソースからインストールするよ</p>
+<div class="highlight-python"><pre>$ hg clone https://vim.googlecode.com/hg/ vim
+$ cd vim/
+$ ./configure \
+prefix=/usr \
+enable-multibyte \
+enable-mzschemeinterp \
+enable-perlinterp=yes \
+enable-pythoninterp=yes \
+enable-rubyinterp=yes
+$ make
+$ sudo make install</pre>
+</div>
+</div>
+<div class="section" id="git">
+<h3>git インストール<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ yum -y install git-all</pre>
+</div>
+</div>
+<div class="section" id="nginx">
+<span id="nginx-install"></span><h3>nginx インストール<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">下記参照</div>
+<div class="line"><a class="reference external" href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a></div>
+</div>
+<div class="highlight-python"><pre>$ cat &lt;&lt; EOS &gt;&gt; /etc/yum.repos.d/nginx.repo
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/6/\$basearch/
+gpgcheck=0
+enabled=1
+EOS
+$ yum -y install nginx
+$ service nginx start</pre>
+</div>
+<p>nginxの現在設定は<a class="reference internal" href="nginx_memo.html#nginx-config"><em>nginx 現在の設定関連メモ</em></a></p>
+</div>
+<div class="section" id="java">
+<h3>java インストール<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h3>
+<p>せっかくなのでjava7入れる</p>
+<div class="highlight-python"><pre># http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u4-downloads-1591156.html から
+# jdk-7u4-linux-x64.rpm を取得してscpでupした
+$ rpm -ivh jdk-7u4-linux-x64.rpm</pre>
+</div>
+</div>
+<div class="section" id="jenkins">
+<h3>jenkins インストール<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">下記参考</div>
+<div class="line"><a class="reference external" href="http://pkg.jenkins-ci.org/redhat/">http://pkg.jenkins-ci.org/redhat/</a></div>
+</div>
+<div class="highlight-python"><pre>$ sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+$ sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+$ sudo yum -y install jenkins
+$ sudo service jenkins start</pre>
+</div>
+<div class="line-block">
+<div class="line">jenkinsに関しては <a class="reference internal" href="jenkins_memo.html#jenkins-config"><em>Jenkins関連メモ</em></a></div>
+<div class="line">nginxの proxy pass とかの設定は <a class="reference internal" href="nginx_memo.html#nginx-config"><em>nginx 現在の設定関連メモ</em></a></div>
+</div>
+</div>
+<div class="section" id="iptables">
+<h3>iptablesの設定<a class="headerlink" href="#iptables" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">CentOSインストール状態でiptablesが設定されている</div>
+<div class="line">自分の環境にあわせて設定し直す</div>
+<div class="line">多分初期状態だと上記のjenkinsとか確認できない</div>
+</div>
+<div class="highlight-python"><pre>以下みたいなのをiptables.shとしてどっかに保存
+
+=========== ここから ============
+
+#!/bin/sh
+
+# サービス適応範囲
+trusthost='自分の環境にあわせて' # 下記では使ってないけど
+myhost='自分の環境にあわせて（鯖のip）'
+any='0.0.0.0/0'
+
+# 一旦初期化
+iptables -F
+
+# デフォルトルール
+iptables -P INPUT DROP    # 入ってくるのはダメ。DROP(=deny)はそのまま捨てる。rejectと違い返信しないのでよりセキュアらしい
+iptables -P OUTPUT ACCEPT # 出て行くのはOK
+iptables -P FORWARD DROP  # 通すのはダメ
+
+# 自分からのアクセスはOK
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+# ICMP
+iptables -A OUTPUT -p icmp --icmp-type echo-request -s $myhost -d $any -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-reply -s $any -d $myhost -j ACCEPT
+
+# 内部から始まった外部からの応答はOK
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# 80 22 は OK
+iptables -A INPUT -p tcp -s $any -d $myhost --dport 80 -j ACCEPT
+iptables -A OUTPUT -p tcp -s $myhost --sport 80 -d $any -j ACCEPT
+
+iptables -A INPUT -p tcp -s $any -d $myhost --dport 22 -j ACCEPT
+iptables -A OUTPUT -p tcp -s $myhost --sport 22 -d $any -j ACCEPT
+
+# DNS
+iptables -A INPUT -p udp --sport 53 -j ACCEPT
+iptables -A INPUT -p udp --dport 53 -j ACCEPT
+iptables -A INPUT -p udp --sport 5353 -j ACCEPT
+iptables -A INPUT -p udp --dport 5353 -j ACCEPT
+
+=========== ここまで ============
+
+$ ./iptables.sh # で設定される
+$ service iptables save # saveしないと再起動時に消える</pre>
+</div>
+<div class="line-block">
+<div class="line">上記はどうせ俺しか使わないし〜みたいな適当設定なので、</div>
+<div class="line">なんか問題あっても責任は取りません( ｰ`дｰ´)ｷﾘｯ</div>
+<div class="line">そもそもsshのポートを初期値のまま使っている時点で怖い人に怒られそうｗ</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="nginx_memo.html" title="nginx 現在の設定関連メモ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="github_memo.html" title="github関連メモ"
+             >previous</a> |</li>
+        <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, daneko.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

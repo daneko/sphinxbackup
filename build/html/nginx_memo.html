@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>雑多メモ &mdash; daneko&#39;s memo 0.1.0 documentation</title>
+    <title>nginx 現在の設定関連メモ &mdash; daneko&#39;s memo 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,7 +26,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="daneko&#39;s memo 0.1.0 documentation" href="index.html" />
-    <link rel="prev" title="nginx 現在の設定関連メモ" href="nginx_memo.html" /> 
+    <link rel="next" title="雑多メモ" href="etcmemo.html" />
+    <link rel="prev" title="CloudCore関連メモ" href="cloudcore_cent_memo.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,27 +37,25 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="nginx_memo.html" title="nginx 現在の設定関連メモ"
+          <a href="etcmemo.html" title="雑多メモ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cloudcore_cent_memo.html" title="CloudCore関連メモ"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">雑多メモ</a><ul>
-<li><a class="reference internal" href="#id2">一括文字コード変換</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="nginx_memo.html"
-                        title="previous chapter">nginx 現在の設定関連メモ</a></p>
+  <p class="topless"><a href="cloudcore_cent_memo.html"
+                        title="previous chapter">CloudCore関連メモ</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="etcmemo.html"
+                        title="next chapter">雑多メモ</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/etcmemo.txt"
+    <li><a href="_sources/nginx_memo.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -80,19 +79,11 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="id1">
-<h1>雑多メモ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>一括文字コード変換<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>#（macはnkfがないので）
-$ brew install nkf
-
-# 変換方法
-$ nkf -w -Lu --overwrite **/*.txt
-
-# -Lw CRLF -Lm CR -Lu LF</pre>
-</div>
-</div>
+  <div class="section" id="nginx">
+<span id="nginx-config"></span><h1>nginx 現在の設定関連メモ<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h1>
+<script src="https://gist.github.com/2143576.js?file=jenkins.conf"></script>
+<script src="https://gist.github.com/2143576.js?file=sphinx.conf"></script>
+<script src="https://gist.github.com/2143576.js?file=www.conf"></script><p>インストールは<a class="reference internal" href="cloudcore_cent_memo.html#nginx-install"><em>nginx インストール</em></a></p>
 </div>
 
 
@@ -108,7 +99,10 @@ $ nkf -w -Lu --overwrite **/*.txt
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="nginx_memo.html" title="nginx 現在の設定関連メモ"
+          <a href="etcmemo.html" title="雑多メモ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cloudcore_cent_memo.html" title="CloudCore関連メモ"
              >previous</a> |</li>
         <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
       </ul>

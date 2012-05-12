@@ -94,7 +94,7 @@
           <div class="body">
             
   <div class="section" id="jenkins">
-<h1>Jenkins関連メモ<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h1>
+<span id="jenkins-config"></span><h1>Jenkins関連メモ<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="jenkinsmercurial-bitbucket">
 <h2>jenkinsでMercurial+bitbucketを使うために<a class="headerlink" href="#jenkinsmercurial-bitbucket" title="Permalink to this headline">¶</a></h2>
 <p>mercurial plugin を導入する</p>
@@ -182,9 +182,8 @@ ssh = ssh -C -i path_to_JENKINSHOME/.ssh/id_rsa</pre>
 <p>github plugin を入れる</p>
 <div class="line-block">
 <div class="line">入れようとするとgit関連のプラグインが勝手に複数インストールされるので入れてもらう</div>
-<div class="line">未確認だが、プラグイン側からgithub側に設定を飛ばせる</div>
+<div class="line">プラグイン側からgithub側に設定を飛ばせる</div>
 <div class="line">なのでアカウントだけ渡せば、bitbucketと異なりjenkins側だけで操作が完了</div>
-<div class="line">jobのビルドトリガにBuild when a change is pushed to GitHub ってのができるしね</div>
 </div>
 </div>
 <div class="section" id="jenkins-sbt">

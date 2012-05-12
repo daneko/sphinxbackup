@@ -1,9 +1,10 @@
 .. jenkins関連のメモ
 
+.. _jenkins-config:
 
-===============
+================
 Jenkins関連メモ
-===============
+================
 
 jenkinsでMercurial+bitbucketを使うために
 -----------------------------------------
@@ -101,9 +102,8 @@ jenkins + git + github
 github plugin を入れる
 
 | 入れようとするとgit関連のプラグインが勝手に複数インストールされるので入れてもらう
-| 未確認だが、プラグイン側からgithub側に設定を飛ばせる
+| プラグイン側からgithub側に設定を飛ばせる
 | なのでアカウントだけ渡せば、bitbucketと異なりjenkins側だけで操作が完了
-| jobのビルドトリガにBuild when a change is pushed to GitHub ってのができるしね
 
 jenkins + sbt
 -------------

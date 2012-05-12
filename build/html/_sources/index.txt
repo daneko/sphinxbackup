@@ -13,6 +13,8 @@ Contents:
 
    jenkins_memo
    github_memo
+   cloudcore_cent_memo
+   nginx_memo
    etcmemo
 
 
