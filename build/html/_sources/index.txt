@@ -15,6 +15,7 @@ Contents:
    github_memo
    cloudcore_cent_memo
    nginx_memo
+   playframework_memo
    etcmemo
 
 

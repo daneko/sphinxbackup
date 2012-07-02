@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Play!関連メモ &mdash; daneko&#39;s memo 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="daneko&#39;s memo 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="雑多メモ" href="etcmemo.html" />
+    <link rel="prev" title="nginx 現在の設定関連メモ" href="nginx_memo.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="etcmemo.html" title="雑多メモ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="nginx_memo.html" title="nginx 現在の設定関連メモ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Play!関連メモ</a><ul>
+<li><a class="reference internal" href="#play2-0-1-test">play2.0.1 で test</a></li>
+<li><a class="reference internal" href="#play2-0-2-with-mongodb">play2.0.2 with mongodb</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="nginx_memo.html"
+                        title="previous chapter">nginx 現在の設定関連メモ</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="etcmemo.html"
+                        title="next chapter">雑多メモ</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/playframework_memo.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="play">
+<h1>Play!関連メモ<a class="headerlink" href="#play" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="play2-0-1-test">
+<h2>play2.0.1 で test<a class="headerlink" href="#play2-0-1-test" title="Permalink to this headline">¶</a></h2>
+<p>sbtでもplayコマンドでもテストは実行可能</p>
+<div class="highlight-python"><pre>play new hoge
+cd hoge
+# 作業
+sbt clean update compile test
+or
+play test</pre>
+</div>
+<div class="line-block">
+<div class="line">sbtの場合、まず依存関係の解消に向かうため、totalでは遅い</div>
+<div class="line">playコマンドの場合（おそらくsbtをラップしているので）、test自体は遅い</div>
+<div class="line">ローカルで実行するさいはどっちでもいいと思うけど</div>
+<div class="line">インタラクティブモードにして ~test で実行すればいいと思う</div>
+<div class="line"><br /></div>
+<div class="line">使い方次第だけどJenkinsのplayプラグインは1系が対象？</div>
+<div class="line">→ Play 1.1 or later とはあるけど 未確認</div>
+<div class="line"><a class="reference external" href="https://wiki.jenkins-ci.org/display/JENKINS/play-plugin">https://wiki.jenkins-ci.org/display/JENKINS/play-plugin</a></div>
+<div class="line"><br /></div>
+<div class="line">なお、play2.0.1はsbt0.11.2を使用しているので</div>
+<div class="line"><strong>sbt で play アプリケーションをテストしたりする場合は</strong></div>
+<div class="line">sbt0.11.2をインストールしている状態にすること</div>
+<div class="line">→ sbt0.11.3 だとそもそもダメだった</div>
+<div class="line">→ playコマンドの場合sbt内包っぽいので問題ない</div>
+<div class="line"><br /></div>
+<div class="line">mac で homebrewを使用している場合は下記のように11.2を指定してインストールし直すこと</div>
+</div>
+<div class="highlight-python"><pre>brew uninstall sbt
+brew versions sbt
+# 11.2のgitコマンドをコピー
+cd /usr/local
+git checkout...
+brew install sbt</pre>
+</div>
+<p>play2.0.2だとsbt0.11.3でもOKぽい</p>
+</div>
+<div class="section" id="play2-0-2-with-mongodb">
+<h2>play2.0.2 with mongodb<a class="headerlink" href="#play2-0-2-with-mongodb" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/leon/play-salat">https://github.com/leon/play-salat</a></div>
+<div class="line">あたりのプラグインを使うとできる</div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="https://github.com/Mironor/Play-2.0-Scala-MongoDb-Salat-exemple">https://github.com/Mironor/Play-2.0-Scala-MongoDb-Salat-exemple</a></div>
+<div class="line">当たりが参考になる</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="etcmemo.html" title="雑多メモ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="nginx_memo.html" title="nginx 現在の設定関連メモ"
+             >previous</a> |</li>
+        <li><a href="index.html">daneko&#39;s memo 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, daneko.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
